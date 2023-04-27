@@ -9,4 +9,7 @@ internal class UserEntity
     public string PhoneNumber { get; set; } = null!;
     public int UserTypeId { get; set; }
     public int AdressId { get; set; }
+
+    public ICollection<CaseEntity> Cases { get; set; } = new HashSet<CaseEntity>();
+    public ICollection<CommentEntity> Comments { get; set; } = new HashSet<CommentEntity>();
 }

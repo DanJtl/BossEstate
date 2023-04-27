@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BossEstate.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace BossEstate.Contexts;
 
 internal class DataContext : DbContext
 {
-    public DataContext(DbContextOptions<DataContext> options) : base(options)
+    #region constructors & overrides
+    public DataContext()
     {
     }
-
-    protected DataContext()
+    public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
     }
 
@@ -21,4 +22,12 @@ internal class DataContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
     }
+    #endregion
+
+    public DbSet<AddressEntity> Addresses { get; set; }
+    public DbSet<UserTypeEntity> UserTypes { get; set; }
+    public DbSet<StatusTypeEntity> StatusTypes { get; set; }
+    public DbSet<UserEntity> Users { get; set; }
+    public DbSet<CaseEntity> Cases { get; set; }
+    public DbSet<CommentEntity> Comments { get; set; }
 }

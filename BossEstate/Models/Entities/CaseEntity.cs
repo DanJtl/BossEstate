@@ -9,4 +9,6 @@ internal class CaseEntity
     public string Description { get; set; } = null!;
     public Guid UserId { get; set; }
     public int StatusTypeId { get; set; }
+
+    public ICollection<CommentEntity> Comments { get; set; } = new HashSet<CommentEntity>();
 }
