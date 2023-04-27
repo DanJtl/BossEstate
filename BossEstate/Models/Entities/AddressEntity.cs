@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace BossEstate.Models.Entities;
 
-namespace BossEstate.Models.Entities
+internal class AddressEntity
 {
-    internal class AddressEntity
-    {
-    }
+    public int Id { get; set; }
+    public string StreetName { get; set; } = null!;
+    public string PostalCode { get; set; } = null!;
+    public string City { get; set; } = null!;
 }

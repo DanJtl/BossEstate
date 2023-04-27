@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace BossEstate.Models.Entities;
 
-namespace BossEstate.Models.Entities
+internal class UserTypeEntity
 {
-    internal class UserTypeEntity
-    {
-    }
+    public int Id { get; set; }
+    public string TypeName { get; set; } = null!;
 }

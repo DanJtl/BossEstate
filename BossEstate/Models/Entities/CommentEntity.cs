@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace BossEstate.Models.Entities;
 
-namespace BossEstate.Models.Entities
+internal class CommentEntity
 {
-    internal class CommentEntity
-    {
-    }
+    public Guid Id { get; set; }
+    public DateTime Created { get; set; }
+    public string Comment { get; set; } = null!;
+    public Guid CaseId { get; set; }
+    public Guid UserId { get; set; }
 }
