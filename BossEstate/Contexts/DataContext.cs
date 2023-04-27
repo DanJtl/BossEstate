@@ -14,7 +14,7 @@ internal class DataContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(@"");
+        optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Business\Kodning\ec_utbildning\submissions\datalagring\BossEstate\BossEstate\Contexts\bossestate_db.mdf;Integrated Security=True;Connect Timeout=30");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
