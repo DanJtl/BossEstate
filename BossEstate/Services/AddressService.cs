@@ -15,9 +15,9 @@ internal class AddressService
         return await _context.Addresses.ToListAsync();
     }
 
-    public async Task<AddressEntity> GetAsync(int id)
+    public async Task<AddressEntity> GetAsync(Expression<Func<AddressEntity, bool>> predicate)
     {
-        var item = await _context.Addresses.FindAsync(id);
+        var item = await _context.Addresses.FirstOrDefaultAsync(predicate, CancellationToken.None);
         if (item != null)
             return item;
 
@@ -26,8 +26,13 @@ internal class AddressService
 
     public async Task<AddressEntity> SaveAsync(AddressEntity entity)
     {
-        _context.Add(entity);
-        await _context.SaveChangesAsync();
-        return entity;
+        var addressEntity = await GetAsync(x => x.StreetName ==  entity.StreetName && x.PostalCode == entity.PostalCode && x.City == entity.City);
+        if (addressEntity == null) 
+        {
+            _context.Add(entity);
+            await _context.SaveChangesAsync();
+            return entity;
+        }
+        return addressEntity;
     }
 }
