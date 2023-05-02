@@ -23,4 +23,11 @@ internal class AddressService
 
         return null!;
     }
+
+    public async Task<AddressEntity> SaveAsync(AddressEntity entity)
+    {
+        _context.Add(entity);
+        await _context.SaveChangesAsync();
+        return entity;
+    }
 }
