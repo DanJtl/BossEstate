@@ -1,2 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using BossEstate.Models.Entities;
+using BossEstate.Services;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+
+var addressService = new AddressService();
+

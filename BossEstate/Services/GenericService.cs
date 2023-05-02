@@ -8,9 +8,14 @@ internal abstract class GenericService<TEntity> where TEntity : class
 {
     private readonly DataContext _context = new DataContext();
 
-    public async Task SaveAsync(TEntity entity)
+    public virtual async Task SaveAsync(TEntity entity)
     {
         _context.Add(entity);
         await _context.SaveChangesAsync();
+    }
+
+    public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
+    {
+        return await _context.Set<TEntity>().ToListAsync();
     }
 }
