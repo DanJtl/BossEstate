@@ -1,5 +1,4 @@
 ﻿using BossEstate.Contexts;
-using BossEstate.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -21,13 +20,6 @@ internal abstract class GenericService<TEntity> where TEntity : class
             return item;
 
         return null!;
-    }
-
-    public virtual async Task<TEntity> SaveAsync(TEntity entity)
-    {
-        _context.Add(entity);
-        await _context.SaveChangesAsync();
-        return entity;
     }
 
     public virtual async Task<TEntity> SaveAsync(TEntity entity, Expression<Func<TEntity, bool>> predicate)

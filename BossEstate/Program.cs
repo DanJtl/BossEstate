@@ -5,3 +5,4 @@ using System.Linq.Expressions;
 
 var addressService = new AddressService();
 
+var addressEntity = await addressService.GetAllAsync();
