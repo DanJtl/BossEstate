@@ -22,6 +22,13 @@ internal abstract class GenericService<TEntity> where TEntity : class
         return null!;
     }
 
+    public virtual async Task<TEntity> SaveAsync(TEntity entity)
+    {
+        _context.Add(entity);
+        await _context.SaveChangesAsync();
+        return entity;
+    }
+
     public virtual async Task<TEntity> SaveAsync(TEntity entity, Expression<Func<TEntity, bool>> predicate)
     {
         var item = await GetAsync(predicate);

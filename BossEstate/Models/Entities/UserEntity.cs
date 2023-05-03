@@ -8,7 +8,7 @@ internal class UserEntity
     public string Email { get; set; } = null!;
     public string PhoneNumber { get; set; } = null!;
 
-    public UserTypeEntity UserType { get; set; } = null!;
+
     public AddressEntity Address { get; set; } = null!;
 
     public ICollection<CaseEntity> Cases { get; set; } = new HashSet<CaseEntity>();

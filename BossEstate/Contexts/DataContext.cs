@@ -25,7 +25,6 @@ internal class DataContext : DbContext
     #endregion
 
     public DbSet<AddressEntity> Addresses { get; set; }
-    public DbSet<UserTypeEntity> UserTypes { get; set; }
     public DbSet<StatusTypeEntity> StatusTypes { get; set; }
     public DbSet<UserEntity> Users { get; set; }
     public DbSet<CaseEntity> Cases { get; set; }

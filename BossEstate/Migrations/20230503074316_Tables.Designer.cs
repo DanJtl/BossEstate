@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BossEstate.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230428081118_Tables")]
+    [Migration("20230503074316_Tables")]
     partial class Tables
     {
         /// <inheritdoc />
@@ -155,33 +155,11 @@ namespace BossEstate.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserTypeId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
 
-                    b.HasIndex("UserTypeId");
-
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("BossEstate.Models.Entities.UserTypeEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("TypeName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserTypes");
                 });
 
             modelBuilder.Entity("BossEstate.Models.Entities.CaseEntity", b =>
@@ -230,15 +208,7 @@ namespace BossEstate.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BossEstate.Models.Entities.UserTypeEntity", "UserType")
-                        .WithMany("Users")
-                        .HasForeignKey("UserTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Address");
-
-                    b.Navigation("UserType");
                 });
 
             modelBuilder.Entity("BossEstate.Models.Entities.AddressEntity", b =>
@@ -261,11 +231,6 @@ namespace BossEstate.Migrations
                     b.Navigation("Cases");
 
                     b.Navigation("Comments");
-                });
-
-            modelBuilder.Entity("BossEstate.Models.Entities.UserTypeEntity", b =>
-                {
-                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

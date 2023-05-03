@@ -40,19 +40,6 @@ namespace BossEstate.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserTypes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TypeName = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -61,7 +48,6 @@ namespace BossEstate.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserTypeId = table.Column<int>(type: "int", nullable: false),
                     AddressId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -71,12 +57,6 @@ namespace BossEstate.Migrations
                         name: "FK_Users_Addresses_AddressId",
                         column: x => x.AddressId,
                         principalTable: "Addresses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Users_UserTypes_UserTypeId",
-                        column: x => x.UserTypeId,
-                        principalTable: "UserTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -161,11 +141,6 @@ namespace BossEstate.Migrations
                 name: "IX_Users_AddressId",
                 table: "Users",
                 column: "AddressId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_UserTypeId",
-                table: "Users",
-                column: "UserTypeId");
         }
 
         /// <inheritdoc />
@@ -185,9 +160,6 @@ namespace BossEstate.Migrations
 
             migrationBuilder.DropTable(
                 name: "Addresses");
-
-            migrationBuilder.DropTable(
-                name: "UserTypes");
         }
     }
 }
